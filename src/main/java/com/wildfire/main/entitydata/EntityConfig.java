@@ -54,7 +54,7 @@ public class EntityConfig {
 
 	public final UUID uuid;
 	protected Gender gender = Configuration.GENDER.getDefault();
-	protected float pBustSize = Configuration.BUST_SIZE.getDefault();
+	protected float pBustSize = Configuration.BUST_SIZE.getDefault()*10;
 	protected boolean breastPhysics = Configuration.BREAST_PHYSICS.getDefault();
 	protected float bounceMultiplier = Configuration.BOUNCE_MULTIPLIER.getDefault();
 	protected float floppyMultiplier = Configuration.FLOPPY_MULTIPLIER.getDefault();
@@ -97,7 +97,7 @@ public class EntityConfig {
 		}
 
 		breastPhysics = false;
-		pBustSize = fromComponent.breastSize();
+		pBustSize = fromComponent.breastSize()*10;
 		gender = pBustSize >= 0.02f ? Gender.FEMALE : Gender.MALE;
 		breasts.updateCleavage(fromComponent.cleavage());
 		breasts.updateOffsets(fromComponent.offsets());
@@ -125,7 +125,7 @@ public class EntityConfig {
 	}
 
 	public float getBustSize() {
-		return pBustSize;
+		return pBustSize*10;
 	}
 
 	public boolean hasBreastPhysics() {

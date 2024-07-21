@@ -1,5 +1,5 @@
 {
-	"category.wildfire_gender.generic": "Wildfire's Female Gender Mod",
+	"category.wildfire_gender.generic": "Wildfire's Female Gender Mod (modified by w0jtekg8me)",
 	"key.wildfire_gender.gender_menu": "Female Gender Menu",
 	"toast.wildfire_gender.get_started": "Press '%s' to get started!",
 
@@ -57,5 +57,6 @@
 	"wildfire_gender.tooltip.bounce_warning": "Setting 'Bounce Intensity' to a high value will look very unnatural!",
 
 	"wildfire_gender.cancer_awareness.title": "Hey, it's Breast Cancer Awareness Month!",
-	"wildfire_gender.coming_soon": "Coming soon"
+	"wildfire_gender.coming_soon": "Coming soon",
+        "wojtek.breast_size_warning":"Setting 'Breast Size' to a high value will break breasts!"
 }
