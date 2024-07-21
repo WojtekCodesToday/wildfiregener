@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "wildfire_gender",
   "version": "${version}+${minecraft_version}",
-  "name": "Wildfire's Female Gender Mod",
-  "description": "Allows players to choose what gender they want to be.",
+  "name": "Wildfire's Female Gender Mod (modified by w0jtekg8me)",
+  "description": "Allows players to choose what gender they want to be, with a bit of changes by w0jtekg8me.",
   "authors": [
     "WildfireRomeo"
   ],
@@ -15,7 +15,8 @@
     "IzzyBizzy45",
     "Kichura",
     "Powerless001",
-    "pupnewfster"
+    "pupnewfster",
+    "w0jtekg8me"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/female-gender-fabric",

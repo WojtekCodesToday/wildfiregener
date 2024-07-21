@@ -94,7 +94,7 @@ public class WildfireCharacterSettingsScreen extends BaseWildfireScreen {
 
         this.addDrawableChild(this.bounceSlider = new WildfireSlider(xPos, yPos + 60, 158, 20, Configuration.BOUNCE_MULTIPLIER, aPlr.getBounceMultiplier(), value -> {
         }, value -> {
-            float bounceText = 4 * value;
+            float bounceText = 3 * value;
             int v = Math.round(bounceText * 100);
             bounceWarning = v > 100;
             return Text.translatable("wildfire_gender.slider.bounce", v);

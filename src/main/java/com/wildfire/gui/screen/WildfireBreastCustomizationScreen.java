@@ -36,7 +36,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 
 import java.util.UUID;
 
@@ -49,7 +48,7 @@ public class WildfireBreastCustomizationScreen extends BaseWildfireScreen {
 
     private WildfireBreastPresetList PRESET_LIST;
     private int currentTab = 0; // 0 = customization, 1 = presets
-    private boolean breastSizeWarning;
+
     public WildfireBreastCustomizationScreen(Screen parent, UUID uuid) {
         super(Text.translatable("wildfire_gender.appearance_settings.title"), parent, uuid);
     }
@@ -109,23 +108,14 @@ public class WildfireBreastCustomizationScreen extends BaseWildfireScreen {
         //Customization Tab Below
 
 
-        this.addDrawableChild(this.breastSlider = new WildfireSlider(this.width / 2 + 30, j - 48, 158, 20, Configuration.BUST_SIZE, plr.getBustSize()/10,
-        plr::updateBustSize, value -> {
-            float bounceText = 4 * value;
-            int v = Math.round(value * 1.25f * 1000);
-            breastSizeWarning = v > 400;
-            return Text.translatable("wildfire_gender.wardrobe.slider.breast_size", v);
-        }, value -> {
-            if (plr.updateBustSize(value)) {
-                PlayerConfig.saveGenderInfo(plr);
-            }
-        }));
+        this.addDrawableChild(this.breastSlider = new WildfireSlider(this.width / 2 + 30, j - 48, 158, 20, Configuration.BUST_SIZE, plr.getBustSize(),
+              plr::updateBustSize, value -> Text.translatable("wildfire_gender.wardrobe.slider.breast_size", Math.round(value * 1.25f * 100)), onSave));
 
         //Customization
         this.addDrawableChild(this.xOffsetBoobSlider = new WildfireSlider(this.width / 2 + 30, j - 27, 158, 20, Configuration.BREASTS_OFFSET_X, breasts.getXOffset(),
               breasts::updateXOffset, value -> Text.translatable("wildfire_gender.wardrobe.slider.separation", Math.round((Math.round(value * 100f) / 100f) * 10)), onSave));
         this.addDrawableChild(this.yOffsetBoobSlider = new WildfireSlider(this.width / 2 + 30, j - 6, 158, 20, Configuration.BREASTS_OFFSET_Y, breasts.getYOffset(),
-              breasts::updateYOffset, value -> Text.translatable("wildfire_gender.wardrobe.slider.height", Math.round((Math.round(value * 100f) / 100f) * 20)), onSave));
+              breasts::updateYOffset, value -> Text.translatable("wildfire_gender.wardrobe.slider.height", Math.round((Math.round(value * 100f) / 100f) * 10)), onSave));
         this.addDrawableChild(this.zOffsetBoobSlider = new WildfireSlider(this.width / 2 + 30, j + 15, 158, 20, Configuration.BREASTS_OFFSET_Z, breasts.getZOffset(),
               breasts::updateZOffset, value -> Text.translatable("wildfire_gender.wardrobe.slider.depth", Math.round((Math.round(value * 100f) / 100f) * 10)), onSave));
 
@@ -157,7 +147,7 @@ public class WildfireBreastCustomizationScreen extends BaseWildfireScreen {
     private void createNewPreset(String presetName) {
         BreastPresetConfiguration cfg = new BreastPresetConfiguration(presetName);
         cfg.set(BreastPresetConfiguration.PRESET_NAME, presetName);
-        cfg.set(BreastPresetConfiguration.BUST_SIZE, this.getPlayer().getBustSize()*4);
+        cfg.set(BreastPresetConfiguration.BUST_SIZE, this.getPlayer().getBustSize());
         cfg.set(BreastPresetConfiguration.BREASTS_UNIBOOB, this.getPlayer().getBreasts().isUniboob());
         cfg.set(BreastPresetConfiguration.BREASTS_CLEAVAGE, this.getPlayer().getBreasts().getCleavage());
         cfg.set(BreastPresetConfiguration.BREASTS_OFFSET_X, this.getPlayer().getBreasts().getXOffset());
@@ -215,9 +205,6 @@ public class WildfireBreastCustomizationScreen extends BaseWildfireScreen {
             PRESET_LIST.render(ctx, mouseX, mouseY, delta);
             if(PRESET_LIST.getPresetList().length == 0) {
                 ctx.drawText(textRenderer, "No Presets Found", x + ((190 + 28) / 2) - textRenderer.getWidth("No Presets Found") / 2, y - 4, 0xFFFFFF, false);
-            }
-            if(breastSizeWarning){
-                ctx.drawText(textRenderer, Text.translatable("wojtek.breast_size_warning").formatted(Formatting.ITALIC), x + ((190 + 28) / 2) - textRenderer.getWidth(Text.translatable("wojtek.breast_size_warning")) / 2, y - 24, 0xFF6666, false);
             }
         }
     }

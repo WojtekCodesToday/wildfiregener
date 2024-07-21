@@ -28,7 +28,7 @@ public class BreastPresetConfiguration extends AbstractConfiguration {
 	private static final String PRESETS_DIR = "WildfireGender/presets";
 
 	public static final StringConfigKey PRESET_NAME = new StringConfigKey("preset_name", "");
-	public static final FloatConfigKey BUST_SIZE = new FloatConfigKey("bust_size", 0.6F, 0, 2.8f);
+	public static final FloatConfigKey BUST_SIZE = new FloatConfigKey("bust_size", 0.6F, 0, 0.8f);
 
 	public static final FloatConfigKey BREASTS_OFFSET_X = new FloatConfigKey("breasts_xOffset", 0.0F, -1, 1);
 	public static final FloatConfigKey BREASTS_OFFSET_Y = new FloatConfigKey("breasts_yOffset", 0.0F, -1, 1);
